@@ -1,6 +1,6 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel #, Field
 #from app.product.models.py_object_id import PyObjectId
-from bson import ObjectId
+#from bson import ObjectId
 
 
 class ProductEntity(BaseModel):
