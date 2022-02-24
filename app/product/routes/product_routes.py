@@ -18,10 +18,14 @@ async def get_product(product_code: str):
 
 @route.post('', response_model=ProductEntity)
 async def create_products(product: ProductEntity):
-    response = await product_repository.create_product(product.dict())
-    if response:
-        return response
-    raise HTTPException(400, "Something went wrong / Bad Request")
+    product_db = product_repository.get_product_by_code(product.product_code)
+    if not product_db:
+        response = await product_repository.create_product(product.dict())
+        if response:
+            return response
+        raise HTTPException(400, "Something went wrong / Bad Request")
+    raise HTTPException(400, "Duplicated / Bad Request")
+    
 
 @route.put('/{product_code}', response_model=ProductEntity)
 async def update_product(product_code:str, product: ProductEntityUpdate):
