@@ -1,7 +1,6 @@
 from fastapi import APIRouter, HTTPException
 from app.product.models.product_entity import ProductEntity, ProductEntityUpdate
 from app.product.repositories import product_repository
-import os
 
 route = APIRouter(prefix='/product', tags=['Product'])
 
