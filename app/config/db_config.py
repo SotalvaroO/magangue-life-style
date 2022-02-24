@@ -1,8 +1,8 @@
 # MongoDB Driver async
-import os
+from decouple import config
 import motor.motor_asyncio
-username = os.getenv("MONGO_USER")
-password = os.getenv("MONGO_PASSWORD")
-client = motor.motor_asyncio.AsyncIOMotorClient('mongodb+srv://{username}:{password}@databasecluster.1ry5d.mongodb.net/test')
+
+url: str = config('MONGO_URL')
+client = motor.motor_asyncio.AsyncIOMotorClient(url)
 data_base = client.MagangeLifeStyle
 product_collection = data_base.products
