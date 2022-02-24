@@ -4,8 +4,7 @@ from app.product.routes.product_routes import route
 
 app = FastAPI()
 
-
-app.include_router(route)
+app.include_router(route,prefix='/api')
 
 @app.get('/')
 async def home():
